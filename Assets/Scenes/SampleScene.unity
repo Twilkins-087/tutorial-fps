@@ -436,7 +436,8 @@ Transform:
   m_LocalPosition: {x: 0.22, y: -0.339, z: 1.39}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1773234938}
   m_Father: {fileID: 1637063693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1114417606
@@ -500,6 +501,7 @@ GameObject:
   - component: {fileID: 1250436938}
   - component: {fileID: 1250436940}
   - component: {fileID: 1250436939}
+  - component: {fileID: 1250436941}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -542,7 +544,7 @@ MonoBehaviour:
   walkSpeed: 3
   jumpPower: 5
   groundCheckPoint: {fileID: 1996714694}
-  groundCheckRadius: 0.05
+  groundCheckRadius: 0.1
   _grounded: 0
   _velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &1250436940
@@ -571,6 +573,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1250436941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250436934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5ad3f3c69878c4784fdc611d30d20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHolster: {fileID: 1637063693}
+  sensitivity: 1
+  bulletFirePoint: {fileID: 1773234938}
+  bullet: {fileID: 82602849676907714, guid: 319210658abc32547b3729fcded00fc8, type: 3}
 --- !u!1 &1349923463
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637063692}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.549, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -696,6 +714,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1773234937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773234938}
+  m_Layer: 0
+  m_Name: BulletFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773234938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773234937}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1114417605}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1996714693
 GameObject:
   m_ObjectHideFlags: 0

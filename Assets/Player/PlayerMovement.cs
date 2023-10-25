@@ -17,16 +17,15 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController _characterController;
 
-    Vector3 _prevMousePosition;
-
     [SerializeField] bool _grounded = false;
     [SerializeField] Vector3 _velocity = Vector3.zero;
+
+    bool _canJump = true;
 
     // Start is called before the first frame update
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _prevMousePosition = Input.mousePosition;
     }
 
     // Update is called once per frame
@@ -52,12 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Walk()
     {
-        var moveWalk = Input.GetKey(KeyCode.W)
-            ? 1
-            : Input.GetKey(KeyCode.S) ? -1 : 0;
-        var moveStrafe = Input.GetKey(KeyCode.D)
-            ? 1
-            : Input.GetKey(KeyCode.A) ? -1 : 0;
+        var vertical = Input.GetAxis("Vertical");
+        var horizontal = Input.GetAxis("Horizontal");
+
+        var moveWalk = Mathf.Approximately(vertical, 0) ? 0 : (int)Mathf.Sign(vertical);
+        var moveStrafe = Mathf.Approximately(horizontal, 0) ? 0 : (int)Mathf.Sign(horizontal);
 
         var planarVelocity = Vector3.zero;
         planarVelocity.x = Vector3.Dot(_velocity, transform.right);
@@ -91,21 +89,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Turn()
     {
-        var delta = Input.mousePosition - _prevMousePosition;
-        _prevMousePosition = Input.mousePosition;
-
-        transform.Rotate(new Vector3(0, delta.x, 0));
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0));
     }
 
     void Jump()
     {
-        if (!_grounded)
+        if (!_grounded || !_canJump)
             return;
 
+        // Noticing an odd pause between landing and jumping when the jump
+        // key is held down
+
         // With GetKey rather than GetKeyDown we get easy bunny hops
-        // TODO Jump Timeout
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetButton("Jump"))
+        {
             _velocity.y += jumpPower;
+            StartCoroutine(ReJumpTimeout());
+        }
+    }
+
+    IEnumerator ReJumpTimeout()
+    {
+        _canJump = false;
+        yield return new WaitForSeconds(0.2f);
+        _canJump = true;
     }
 
     void PlanarDecelerate()
