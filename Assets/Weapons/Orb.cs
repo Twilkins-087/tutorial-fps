@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Orb : Bullet
 {
-    [SerializeField] float fireSpeed = 4;
+    [SerializeField] float fireSpeed = 20;
     [SerializeField] float aliveTime = 6f;
 
     Rigidbody _rigidbody;
+
+    protected override float Damage => damage;
 
     private void Start()
     {

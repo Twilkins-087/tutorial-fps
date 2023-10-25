@@ -37,6 +37,6 @@ public class PlayerShooter : MonoBehaviour
             return;
 
         var bulletObj = Instantiate<Bullet>(bullet, bulletFirePoint.position, Quaternion.identity);
-        bulletObj.Fire(bulletFirePoint.position);
+        bulletObj.Fire(bulletFirePoint.forward);
     }
 }

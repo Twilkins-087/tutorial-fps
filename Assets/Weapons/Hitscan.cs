@@ -7,6 +7,8 @@ public class Hitscan : Bullet
     [SerializeField] float distance = 10;
     [SerializeField] LayerMask hitLayer;
 
+    protected override float Damage => damage;
+
     public override void Fire(Vector3 forward)
     {
         Ray hitscan = new Ray(transform.position, forward);
