@@ -36,7 +36,17 @@ public class PlayerShooter : MonoBehaviour
         if (!Input.GetButtonDown("Fire1"))
             return;
 
-        var bulletObj = Instantiate<Bullet>(bullet, bulletFirePoint.position, Quaternion.identity);
+        var bulletObj = Instantiate<Bullet>(bullet, bulletFirePoint.position, bulletFirePoint.rotation);
         bulletObj.Fire(bulletFirePoint.forward);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var pickup = other.GetComponent<Pickup>();
+        if (pickup)
+        {
+            bullet = pickup.Weapon;
+            Destroy(pickup.gameObject);
+        }
     }
 }

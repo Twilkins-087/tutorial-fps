@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4aedfc14ed98ad046ab06aab5bd18795, type: 2}
+  - {fileID: 2100000, guid: 230acb53f3fee4f4e92563117bb70d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3834072698644367924}
   - component: {fileID: 82602849676907714}
   m_Layer: 0
-  m_Name: Orb
+  m_Name: Bluster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

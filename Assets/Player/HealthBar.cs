@@ -15,7 +15,6 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateHealth(HealthStatus status)
     {
-        Debug.Log(status.Health);
         _slider.normalizedValue = status.Health / status.MaxHealth;
     }
 }

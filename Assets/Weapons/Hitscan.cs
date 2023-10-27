@@ -14,13 +14,20 @@ public class Hitscan : Bullet
         Ray hitscan = new Ray(transform.position, forward);
         RaycastHit[] hits = Physics.RaycastAll(hitscan, distance, hitLayer);
 
+        Debug.Log(hits.Length);
         if (hits.Length > 0)
         {
             var hit = hits[0];
-            //var damageTaker = hit.collider.GetComponent<DamageTaker>()
-            //damageTaker.TakeDamage(damage);
+            var damageTaker = hit.collider.GetComponent<DamageTaker>();
+            damageTaker.TakeDamage(damage);
         }
 
+        StartCoroutine(DelayedDestroy());
+    }
+
+    IEnumerator DelayedDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
 }
