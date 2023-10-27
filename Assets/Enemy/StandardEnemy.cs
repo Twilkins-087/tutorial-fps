@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
-public class StandardEnemy : MonoBehaviour
+[RequireComponent(typeof(NavMeshAgent))]
+public class StandardEnemy : Enemy
 {
-    [SerializeField] Transform _target;
-
     NavMeshAgent _nmAgent;
 
     private void Start()
@@ -17,10 +15,11 @@ public class StandardEnemy : MonoBehaviour
 
     private void Update()
     {
-        _nmAgent.SetDestination(_target.position);
+        if (target != null)
+            _nmAgent.SetDestination(target.position);
     }
 
-    public void Die()
+    public override void Die()
     {
         Destroy(gameObject);
     }
