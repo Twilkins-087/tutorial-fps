@@ -83,8 +83,8 @@ public class PlayerMovement : MonoBehaviour
         var vecMove = new Vector3(moveStrafe, 0, moveWalk);
         vecMove /= vecMove.magnitude;
 
-        var acceleration = transform.forward * vecMove.z + transform.right * vecMove.x * walkAcceleration;
-        _velocity += acceleration * Time.deltaTime;
+        var trueDirection = transform.forward * vecMove.z + transform.right * vecMove.x;
+        _velocity += trueDirection * walkAcceleration * Time.deltaTime;
     }
 
     void Turn()
