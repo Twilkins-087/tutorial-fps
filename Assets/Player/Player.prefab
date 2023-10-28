@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2686899805333363526}
   - component: {fileID: 660659859690607782}
   m_Layer: 0
-  m_Name: Blicky
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,13 +369,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9.81
-  walkAcceleration: 5
   walkSpeed: 6
   jumpPower: 5
   groundCheckPoint: {fileID: 6489165962420428884}
   groundCheckRadius: 0.1
-  _grounded: 0
-  _velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &5199167360029979619
 MonoBehaviour:
   m_ObjectHideFlags: 0

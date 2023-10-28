@@ -1,52 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles aiming up and down shooting
+/// </summary>
 public class PlayerShooter : MonoBehaviour
 {
     [SerializeField] Transform weaponHolster;
-    [SerializeField] float sensitivity = 1f;
 
     [SerializeField] Transform bulletFirePoint;
-    [SerializeField] Bullet bullet;
+    [SerializeField] Bullet bulletObj;
 
-    void Start()
+    private void Start()
     {
-        // TODO Export handling of mouse state to a manager script
+        // This makes it so the game captures the mouse
+        // Without it the mouse scrolls out the game window constantly
+        // Try commenting out this line
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
         Aim();
         Fire();
+
+        // Having the cursor captured prevents us from
+        // doing anything else in the editor
+        // So this makes it so that hitting the "Cancel" button
+        // restores the mouse to regular functionality
+        if (Input.GetButtonDown("Cancel"))
+            Cursor.lockState = CursorLockMode.None;
     }
 
-    void Aim()
+    private void Aim()
     {
-        var rotate = Input.GetAxis("Mouse Y") * sensitivity;
-        weaponHolster.Rotate(new Vector3(-rotate, 0, 0));
+        // Using the mouse's vertical movement we rotate the weaponHolster
+        // Similar to how we would turn in PlayerMovement
+        // Although, would we rotate on the same axis?
+
+
+        // EXTENSION
+
+        // Are you satisfied with the aim speed?
+        // How could you make the more smooth?
     }
 
-    void Fire()
+    private void Fire()
     {
-        if (!bullet)
-            return;
+        // Upon pressing the fire button
 
-        if (!Input.GetButtonDown("Fire1"))
-            return;
+        // We want to Instantiate a bulletObj at the position and rotation
+        // of bulletFirePoint
+        // Instantiate creates a copy of a prefab and places it in the game world
 
-        var bulletObj = Instantiate<Bullet>(bullet, bulletFirePoint.position, bulletFirePoint.rotation);
-        bulletObj.Fire(bulletFirePoint.forward);
+        // Finally we call the Fire method on the bullet, passing in the direction
+        // we want to fire it at
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var pickup = other.GetComponent<Pickup>();
-        if (pickup)
-        {
-            bullet = pickup.Weapon;
-            Destroy(pickup.gameObject);
-        }
+        // NOT FOR SESSION 1
+
+        // Check to see if other has a Pickup component
+        // If it does, assign it's Weapon field to bulletObj
+        // and destroy the pickup
     }
 }
