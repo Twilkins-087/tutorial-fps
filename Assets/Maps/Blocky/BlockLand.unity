@@ -272,6 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3e4802e6f582c40afce8441bd2e43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &580155228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6489165962420428884, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
+  m_PrefabInstance: {fileID: 7494276615620359905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &628514419
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +593,7 @@ GameObject:
   - component: {fileID: 711575935}
   - component: {fileID: 711575934}
   - component: {fileID: 711575933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,6 +1348,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227838806772420024, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
+      propertyPath: _grounded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227838806772420024, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 580155228}
+    - target: {fileID: 1227838806772420024, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227838806772420024, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2767764323451779652, guid: 8ede73e12739e42429e5373f3e8de5f4, type: 3}
       propertyPath: onHealthChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
